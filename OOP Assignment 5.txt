@@ -1,0 +1,266 @@
+import java.util.*;
+interface vehicle{
+	void gear_change();
+	void speed();
+	void brakes();
+	
+}
+
+class bicycle implements vehicle{
+	Scanner sc=new Scanner(System.in);
+	int gear=1;
+	int speed=0;
+	public void gear_change() {
+		System.out.println (" ENTER CHOICE 1.) Upshift 2.) Downshift");
+		int x=sc.nextInt();
+		
+		switch(x) {
+		case 1:
+			gear++ ;
+			if (gear>=7) {
+				System.out.println("VEHICLE IS AT HIGHEST GEAR") ;
+			}
+			else {
+				System.out.println("CURRENT GEAR : " + gear) ;
+			}
+			break;
+		case 2:
+			gear-- ;
+			if (gear<=1) {
+				System.out.println("VEHICLE IS AT LOWEST GEAR") ;
+			}
+			else {
+				System.out.println("CURRENT GEAR : " + gear) ;
+			}
+			break;
+		}
+	}
+	public void speed() {
+		if (gear == 1) {
+			System.out.println("CURRENT SPEED : " + "5 Kmph") ;
+			}
+		else if (gear == 2) {
+			System.out.println("CURRENT SPEED : " + "10 Kmph") ;
+			}
+		else if (gear == 3) {
+			System.out.println("CURRENT SPEED : " + "15 Kmph") ;
+			}
+		else if (gear == 4) {
+			System.out.println("CURRENT SPEED : " + "20 Kmph") ;
+			}
+		else if (gear == 5) {
+			System.out.println("CURRENT SPEED : " + "25 Kmph") ;
+			}
+		else if (gear == 6) {
+			System.out.println("CURRENT SPEED : " + "30 Kmph") ;
+			}
+		else if (gear == 7) {
+			System.out.println("CURRENT SPEED : " + "40 Kmph") ;
+			}
+	}
+	public void brakes() {
+		gear=1;
+		speed=0;
+		System.out.println ("BRAKES APPLIED. SPEED = 0 Km/h");
+		System.out.println ("                CURRENT GEAR: 1");
+	}
+}
+
+class bike implements vehicle{
+	Scanner sc=new Scanner(System.in);
+	int gear=0;
+	int speed=0;
+	public void gear_change() {
+		System.out.println (" ENTER CHOICE 1.) Upshift 2.) Downshift");
+		int x=sc.nextInt();
+		
+		switch(x) {
+		case 1:
+			gear++ ;
+			if (gear>=6) {
+				System.out.println("VEHICLE IS AT HIGHEST GEAR") ;
+			}
+			else {
+				System.out.println("CURRENT GEAR : " + gear) ;
+			}
+			break;
+		case 2:
+			gear-- ;
+			if (gear<=0) {
+				System.out.println("VEHICLE IS AT NEUTRAL") ;
+			}
+			else {
+				System.out.println("CURRENT GEAR : " + gear) ;
+			}
+			break;
+		}
+	}
+	public void speed() {
+		if (gear == 1) {
+			System.out.println("CURRENT SPEED : " + "20 Kmph") ;
+			}
+		else if (gear == 2) {
+			System.out.println("CURRENT SPEED : " + "35 Kmph") ;
+			}
+		else if (gear == 3) {
+			System.out.println("CURRENT SPEED : " + "50 Kmph") ;
+			}
+		else if (gear == 4) {
+			System.out.println("CURRENT SPEED : " + "65 Kmph") ;
+			}
+		else if (gear == 5) {
+			System.out.println("CURRENT SPEED : " + "90 Kmph") ;
+			}
+		else if (gear == 6) {
+			System.out.println("CURRENT SPEED : " + "105 Kmph") ;
+		}
+	}
+	public void brakes() {
+		gear=speed=0;
+		System.out.println ("BRAKES APPLIED. SPEED = 0 Km/h");
+		System.out.println ("                CURRENT GEAR: NEUTRAL");
+	}
+}
+
+class car implements vehicle{
+	Scanner sc=new Scanner(System.in);
+	int gear=0;
+	int speed=0;
+	public void gear_change() {
+		System.out.println (" ENTER CHOICE 1.) Upshift 2.) Downshift");
+		int x=sc.nextInt();
+		
+		switch(x) {
+		case 1:
+			gear++ ;
+			if (gear>=5) {
+				System.out.println("VEHICLE IS AT HIGHEST GEAR") ;
+			}
+			else {
+				System.out.println("CURRENT GEAR : " + gear) ;
+			}
+			break;
+		case 2:
+			gear-- ;
+			if (gear<=0) {
+				System.out.println("VEHICLE IS AT NEUTRAL") ;
+			}
+			else {
+				System.out.println("CURRENT GEAR : " + gear) ;
+			}
+			break;
+		}
+	}
+	public void speed() {
+		if (gear == 1) {
+			System.out.println("CURRENT SPEED : " + "30 Kmph") ;
+			}
+		else if (gear == 2) {
+			System.out.println("CURRENT SPEED : " + "60 Kmph") ;
+			}
+		else if (gear == 3) {
+			System.out.println("CURRENT SPEED : " + "90 Kmph") ;
+			}
+		else if (gear == 4) {
+			System.out.println("CURRENT SPEED : " + "120 Kmph") ;
+			}
+		else if (gear == 5) {
+			System.out.println("CURRENT SPEED : " + "150 Kmph") ;
+			}
+		
+	}
+	public void brakes() {
+		gear=speed=0;
+		System.out.println ("BRAKES APPLIED. SPEED = 0 Km/h");
+		System.out.println ("                CURRENT GEAR: NEUTRAL");
+	}
+}
+class assign{
+	public static void main(String []args) {
+		bicycle by=new bicycle();
+		bike bi=new bike();
+		car cr=new car();
+		Scanner sc=new Scanner (System.in);
+		System.out.println("ENTER VEHICLE TYPE 1.) CAR 2.) BIKE 3.) BICYCLE") ;
+		int x = sc.nextInt();
+		do {
+		switch (x) {
+		case 1 :
+
+		do {	
+			System.out.println("1.) GEAR SHIFT 2.) SPEED 3.) BRAKES") ;
+			int a = sc.nextInt();
+			if (a==1) {
+				cr.gear_change();
+			}
+			else if (a==2) {
+				cr.speed() ;
+			}
+			else {
+				cr.brakes();
+			}
+		} while(x>=1 && x<=3) ;
+		
+		case 2 :
+		do {
+			System.out.println("1.) GEAR SHIFT 2.) SPEED 3.) BRAKES") ;
+			int a = sc.nextInt();
+			if (a==1) {
+				bi.gear_change();
+			}
+			else if (a==2) {
+				bi.speed() ;
+			}
+			else {
+				bi.brakes();
+			}
+		} while(x>=1 && x<=3) ;
+		
+		case 3 :
+		do {
+			System.out.println("1.) GEAR SHIFT 2.) SPEED 3.) BRAKES") ;
+			int a = sc.nextInt();
+			if (a==1) {
+				by.gear_change();
+			}
+			else if (a==2) {
+				by.speed() ;
+			}
+			else {
+				by.brakes();
+			}
+		} while(x>=1 && x<=3) ;
+	 }
+
+	}while(x>=1 && x<=3) ;
+  }
+}
+
+//OUTPUT
+
+SELECT VEHICLE TYPE: 1) CAR 2) BIKE 3) BICYCLE
+1
+
+Choose action: 1) GEAR SHIFT 2) SPEED 3) BRAKES 4) EXIT
+1
+ENTER CHOICE 1) Upshift 2) Downshift
+1
+CURRENT GEAR : 1
+
+Choose action: 1) GEAR SHIFT 2) SPEED 3) BRAKES 4) EXIT
+1
+ENTER CHOICE 1) Upshift 2) Downshift
+1
+CURRENT GEAR : 2
+
+Choose action: 1) GEAR SHIFT 2) SPEED 3) BRAKES 4) EXIT
+2
+CURRENT SPEED : 60 Kmph
+2
+Choose action: 1) GEAR SHIFT 2) SPEED 3) BRAKES 4) EXIT
+3
+BRAKES APPLIED. SPEED = 0 Km/h
+CURRENT GEAR: NEUTRAL
+
+Choose action: 1) GEAR SHIFT 2) SPEED 3) BRAKES 4) EXIT
+1

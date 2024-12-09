@@ -1,0 +1,308 @@
+import java.util.Scanner;
+
+class Publication{
+
+	String title;
+
+	int copies;
+
+	double price;
+
+	int totalCopiesOrdered = 0;
+
+	int totalCopiesSold = 0;
+
+
+
+	Publication(String title, double price, int copies) {
+
+        this.title = title;
+
+        this.price = price;
+
+        this.copies = copies;
+
+	}
+
+	void saleCopy(int numOfCopies) {
+
+        if (numOfCopies <= this.copies) {
+
+            this.copies =this.copies - numOfCopies;
+
+            this.totalCopiesSold =this.totalCopiesSold + numOfCopies;
+
+            System.out.println(numOfCopies + " copies of " + title + " sold.");
+
+        } 
+
+        else {
+
+            System.out.println("Not enough copies available to sell " + numOfCopies + " copies.");
+
+        }
+
+    }
+
+	 double totalSales() {
+
+	      return price * (totalCopiesSold);
+
+	    }
+
+}
+
+class Book extends Publication {
+
+    String author;
+
+
+
+    Book(String title, String author, double price, int copies) {
+
+        super(title, price, copies);
+
+        this.author = author;
+
+    }
+
+
+
+    void orderCopies(int numOfCopies) {
+
+        if (numOfCopies > 0) {
+
+            this.copies =this.copies + numOfCopies;
+
+            this.totalCopiesOrdered = this.totalCopiesOrdered +numOfCopies;
+
+            System.out.println(numOfCopies + " copies of " + title + " ordered.");
+
+        } else {
+
+            System.out.println("Order quantity should be positive.");
+
+        }
+
+    }
+
+}
+
+
+
+class Magazine extends Publication {
+
+    int orderQty;
+
+    String currentIssue;
+
+    String receiveIssue;
+
+
+
+    Magazine(String title, double price, int copies, int orderQty, String currentIssue, String receiveIssue) {
+
+        super(title, price, copies);
+
+        this.orderQty = orderQty;
+
+        this.currentIssue = currentIssue;
+
+        this.receiveIssue = receiveIssue;
+
+    }
+
+
+
+    void orderQty(int qty) {
+
+        if (qty > 0) {
+
+            this.orderQty = qty;
+
+            this.copies =this.copies + qty;
+
+            this.totalCopiesOrdered = this.totalCopiesOrdered + qty;
+
+            System.out.println(qty + " copies of " + title + " ordered.");
+
+        } else {
+
+            System.out.println("Order quantity should be positive.");
+
+        }
+
+    }
+
+
+
+    void receiveIssue(String issue) {
+
+        this.receiveIssue = issue;
+
+        System.out.println("Received issue " + issue + " of " + title);
+
+    }
+
+}
+
+
+
+public class assign {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+
+
+        // Create a book object and take inputs
+
+        System.out.println("Enter details for the book:");
+
+        System.out.print("Title: ");
+        String bookTitle = scanner.nextLine();
+
+        System.out.print("Author: ");
+
+        String bookAuthor = scanner.nextLine();
+
+        //System.out.print("Price (₹): ");
+
+        //double bookPrice = scanner.nextDouble();
+
+        System.out.print("Copies available: ");
+
+        int bookCopies = scanner.nextInt();
+
+
+
+        Book book = new Book(bookTitle, bookAuthor, 500, bookCopies);
+
+
+
+        // Create a magazine object and take inputs
+
+        scanner.nextLine(); // Consume newline
+
+        System.out.println("\nEnter details for the magazine:");
+
+        System.out.print("Title: ");
+
+        String magTitle = scanner.nextLine();
+
+       // System.out.print("Price (₹): ");
+
+        //double magPrice = scanner.nextDouble();
+
+        System.out.print("Copies available: ");
+
+        int magCopies = scanner.nextInt();
+
+        System.out.print("Order quantity: ");
+
+        int orderQty = scanner.nextInt();
+
+        scanner.nextLine(); // Consume newline
+
+        System.out.print("Current issue: ");
+
+        String currentIssue = scanner.nextLine();
+
+        System.out.print("Receive issue: ");
+
+        String receiveIssue = scanner.nextLine();
+
+
+
+        Magazine magazine = new Magazine(magTitle, 200, magCopies, orderQty, currentIssue, receiveIssue);
+
+
+
+        // Order and sell copies
+
+        System.out.println("\nOrder and sell copies:");
+
+        System.out.print("Number of book copies to order: ");
+
+        int bookOrder = scanner.nextInt();
+
+        book.orderCopies(bookOrder);
+
+
+
+        System.out.print("Number of book copies to sell: ");
+
+        int bookSell = scanner.nextInt();
+
+        book.saleCopy(bookSell);
+
+
+
+        System.out.print("Number of magazine copies to order: ");
+
+        int magOrder = scanner.nextInt();
+
+        magazine.orderQty(magOrder);
+
+
+
+        System.out.print("Number of magazine copies to sell: ");
+
+        int magSell = scanner.nextInt();
+
+        magazine.saleCopy(magSell);
+
+        
+
+        System.out.println("\n--- Total Sales Summary ---");
+
+        System.out.println("________________________________________________________________________________________________________________");
+
+		 System.out.println("|         Title         |      Price      |  Copies Ordered  |  Copies Sold   |   Copies Left  |   Total Sale  |");
+
+		 System.out.println("|_______________________|_________________|__________________|________________|________________|_______________|");
+
+		 System.out.println("| "+book.title+"           |       "+book.price+"     |        "+book.totalCopiesOrdered+"        |      "+book.totalCopiesSold+"        |       "+book.copies+"       |   "+book.totalSales()+"    |");
+
+		 System.out.println("| "+magazine.title+"       |       "+magazine.price+"     |        "+magazine.totalCopiesOrdered+"        |      "+magazine.totalCopiesSold+"        |       "+magazine.copies+"       |    "+magazine.totalSales()+"    |");
+
+		 System.out.println("|_______________________|_________________|__________________|________________|________________|_______________|");
+
+        
+
+        scanner.close();
+	}
+}
+java -cp /tmp/OLyyjlu5Qv/assign
+Enter details for the book:
+Title: Basics of Java
+Author: Pranav\
+Price (Rs.): 5000
+Copies available: 40
+
+Enter details for the magazine:
+Title: Hindustan Times
+Price (Rs.): 300
+Copies available: 50
+Order quantity: 20
+Current issue: 5
+Receive issue: 3
+
+Order and sell copies:
+Number of book copies to order: 50
+50 copies of Basics of Java ordered.
+Number of book copies to sell: 70
+70 copies of Basics of Java sold.
+Number of magazine copies to order: 50
+50 copies of Hindustan Times ordered.
+Number of magazine copies to sell: 80
+80 copies of Hindustan Times sold.
+
+--- Total Sales Summary ---
+________________________________________________________________________________________________________________
+|         Title         |      Price      |  Copies Ordered  |  Copies Sold   |   Copies Left  |   Total Sale  |
+|_______________________|_________________|__________________|________________|________________|_______________|
+| Basics of Java        |       500.0     |        50        |      70        |       20       |    35000.0    |
+| Hindustan Times       |       200.0     |        50        |      80        |       20       |    16000.0    |
+|_______________________|_________________|__________________|________________|________________|_______________|

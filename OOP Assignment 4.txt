@@ -1,0 +1,148 @@
+import java.util.Scanner;
+
+
+
+abstract class Shape{
+
+  double val1,val2;
+
+  
+
+  abstract void getdata();
+
+  abstract void compute_area();
+
+}
+
+
+
+class Rectangle extends Shape{
+
+  Scanner sc =new Scanner(System.in);
+
+  void getdata(){
+
+    System.out.print("Enter Length:");
+
+    val1= sc.nextDouble(); 
+
+    System.out.print("Enter Breadth:"); 
+
+    val2=sc.nextDouble();
+
+    }
+
+  void compute_area(){
+
+    System.out.println("Area of Rectangle is:"+(val1*val2));
+
+     }
+
+}
+
+
+
+class Triangle extends Shape{
+
+  Scanner sc =new Scanner(System.in);
+
+  void getdata(){
+
+    System.out.print("Enter Height:");
+
+    val1= sc.nextDouble(); 
+
+    System.out.print("Enter Base:"); 
+
+    val2=sc.nextDouble();
+
+    }
+
+  void compute_area(){
+
+    System.out.println("Area of Triangle is:"+(0.5*val1*val2));
+
+  }
+
+}
+
+ class assign
+
+ {
+
+   public static void main(String []args)
+
+   {
+
+	   Scanner sc =new Scanner(System.in);
+
+	   Shape shape=null;
+
+	   int x;
+
+	   do {
+
+	   System.out.println("1. AREA OF RECTANGLE  2. AREA OF TRIANGLE  3.EXIT");
+
+	   System.out.print("Enter your choice:");
+
+	   x=sc.nextInt();
+
+	   switch(x)
+
+	   {
+
+	   case 1:
+
+		   System.out.println("FOR Rectangle");
+
+		   shape = new Rectangle();
+
+		   shape.getdata();
+
+		   shape.compute_area();
+
+		   System.out.println("");
+
+		   break;
+
+		   
+
+		   case 2:
+
+		   System.out.println("FOR Triangle");
+
+		   shape=new Triangle();
+
+		   shape.getdata();
+
+		   shape.compute_area();
+
+		   break;
+
+	   } 
+
+	   }while(x>=1 && x<3);
+
+     }
+
+ }
+//OUTPUT
+1. AREA OF RECTANGLE  2. AREA OF TRIANGLE  3. EXIT
+Enter your choice: 1
+FOR Rectangle
+Enter Length: 20
+Enter Breadth: 30
+Area of Rectangle is: 600.0
+
+1. AREA OF RECTANGLE  2. AREA OF TRIANGLE  3. EXIT
+Enter your choice: 2
+FOR Triangle
+Enter Height: 30
+Enter Base: 100
+Area of Triangle is: 1500.0
+
+1. AREA OF RECTANGLE  2. AREA OF TRIANGLE  3. EXIT
+Enter your choice: 3
+Exiting program...
+

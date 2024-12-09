@@ -1,0 +1,118 @@
+import java.util.Scanner;
+
+public class assign {
+
+
+
+	public static void main(String[] args) {
+
+		Scanner sc=new Scanner(System.in);
+
+		int Num1,Num2,div;                           //Initialization of variables
+
+		
+
+		try{                                                //First Try Block for Number Format Exception
+
+			System.out.print("Enter the 1st Number:");
+
+			Num1=Integer.parseInt(sc.next());
+
+			System.out.print("Enter the 2nd Number:");
+
+			Num2=Integer.parseInt(sc.next());
+
+			
+
+			try {                                                   //Second Try Block for Arithmetic Exception
+
+				div=Num1/Num2;
+
+				System.out.println("Division of 2 numbers is:"+div);
+
+				
+
+				try {                                                    //Third Try Block for Array Index Out Of Bound Exception
+
+					System.out.print("Enter lenght of the array:");
+
+					int n=sc.nextInt();
+
+					int a[]=new int[n];
+
+					
+
+					for(int i=0;i<n;i++) {                             //for loop for accessing data
+
+						System.out.print("Enter the data:");
+
+						a[i]=sc.nextInt();
+
+					}
+
+					for(int m=0;m<n+1;m++) {                          //for loop for printing data in an Array
+
+						System.out.print(a[m]+" ");
+
+					}
+
+				}
+
+					catch (ArrayIndexOutOfBoundsException e) {          //Exception Handling of Array Index Out of Bound Exception
+
+						System.out.println("Element does not exist");
+
+					}
+
+				}
+
+			catch (ArithmeticException e) {                             //Exception Handling of Arithmetic Exception
+
+				System.out.println("Number cannot be divided by zero");
+
+			}
+
+			
+
+		}
+
+		catch (NumberFormatException e) {                               //Exception handling of Number format Exception
+
+			System.out.println("Enter an Integer");
+
+		}
+
+		
+
+		finally {                                                    //Always Executed at the end
+
+			System.out.println("Finally Code Ended");
+
+		}
+
+	}
+
+}
+//OUTPUT
+1)NumberFormatException:
+Enter the 1st Number:a
+Enter an Integer
+Finally Code Ended
+
+2)ArithmeticException	
+Enter the 1st Number:5
+Enter the 2nd Number:0
+Number cannot be divided by zero
+Finally Code Ended
+
+3)ArrayIndexOutOfBoundsException
+Enter the 1st Number:5
+Enter the 2nd Number:1
+Division of 2 numbers is:5
+Enter lenght of the array:4
+Enter the data:1
+Enter the data:2
+Enter the data:3
+Enter the data:4
+1 2 3 4 Element does not exist
+Finally Code Ended
